@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Artworks</title>
+
+   <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+   <style>
+      html {
+         scroll-behavior: smooth;
+      }
+
+      .navbar-brand i {
+         color: #fff;
+      }
+
+      .home-section {
+         background: url('https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+         height: 100vh;
+         position: relative;
+         color: #fff;
+      }
+
+      .overlay {
+         background: rgba(0, 0, 0, 0.5);
+      }
+
+      .artwork-card {
+         cursor: pointer;
+         transition: transform 0.3s ease;
+      }
+
+      .artwork-card:hover {
+         transform: scale(1.02);
+         box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .artwork-img {
+         height: 300px;
+         object-fit: cover;
+         border-radius: 8px;
+      }
+
+      .preview-popup {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.8);
+         display: none; /* Hidden by default */
+         justify-content: center;
+         align-items: center;
+         z-index: 1050;
+      }
+
+      .preview-box {
+         background: #fff;
+         padding: 2rem;
+         max-width: 500px;
+         width: 90%;
+         text-align: center;
+         border-radius: 12px;
+         position: relative;
+      }
+
+      .preview-box img {
+         width: 100%;
+         max-height: 400px;
+         object-fit: contain;
+         margin-bottom: 1rem;
+      }
+
+      .close-preview {
+         position: absolute;
+         top: 10px;
+         right: 15px;
+         font-size: 1.5rem;
+         color: #333;
+         cursor: pointer;
+         z-index: 1100;
+         padding: 5px;
+      }
+
+      section {
+         padding: 60px 0;
+      }
+
+      /* Footer styling */
+      footer {
+         background-color: #222;
+         color: #bbb;
+         padding: 30px 0;
+      }
+      footer a {
+         color: #bbb;
+         text-decoration: none;
+         transition: color 0.3s ease;
+      }
+      footer a:hover {
+         color: #fff;
+      }
+   </style>
+</head>
+<body>
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+      <div class="container">
+         <a class="navbar-brand" href="#"><i class="fas fa-palette me-2"></i>ArtWorks</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+               <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+               <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+               <li class="nav-item"><a class="nav-link" href="#artists">Artists</a></li>
+               <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+               <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+
+   <!-- Home Section -->
+   <section id="home" class="home-section d-flex align-items-center justify-content-center text-center">
+      <div class="overlay position-absolute top-0 start-0 w-100 h-100 z-1"></div>
+      <div class="container position-relative z-2">
+         <h1 class="display-3 fw-bold">Welcome to ArtWorks</h1>
+         <p class="lead mt-3">Explore inspiring digital artworks from emerging artists around the world.</p>
+         <a href="#gallery" class="btn btn-light btn-lg mt-4">Explore Gallery</a>
+      </div>
+   </section>
+   
+<!-- Artworks Section -->
+  <section class="py-5" id="gallery">
+  <div class="container">
+    <h2 class="text-center mb-5">Gallery</h2>
+
+    <!-- Modern Art -->
+    <h3 class="mb-4">Modern Art</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+      <div class="col">
+        <div class="artwork-card" data-title="Color Pulse" data-desc="A bold interpretation of emotional energy.">
+          <img src="images/modern1.jpg" class="card-img-top artwork-img" alt="Color Pulse" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Color Pulse</h5>
+            <p class="card-text">A bold interpretation of emotional energy.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Urban Heat" data-desc="Modern chaos captured in vibrant form.">
+          <img src="images/modern2.jpg" class="card-img-top artwork-img" alt="Urban Heat" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Urban Heat</h5>
+            <p class="card-text">Modern chaos captured in vibrant form.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Neon Flow" data-desc="A glowing journey of layered movement.">
+          <img src="images/modern3.jpg" class="card-img-top artwork-img" alt="Neon Flow" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Neon Flow</h5>
+            <p class="card-text">A glowing journey of layered movement.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Digital Bloom" data-desc="Futuristic petals bursting in abstract beauty.">
+          <img src="images/modern4.jpg" class="card-img-top artwork-img" alt="Digital Bloom" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Digital Bloom</h5>
+            <p class="card-text">Futuristic petals bursting in abstract beauty.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paintings -->
+    <h3 class="mb-4">Paintings</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+      <div class="col">
+        <div class="artwork-card" data-title="Sunset Glow" data-desc="Warm tones depict the golden hour.">
+          <img src="images/painting1.jpg" class="card-img-top artwork-img" alt="Sunset Glow" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Sunset Glow</h5>
+            <p class="card-text">Warm tones depict the golden hour.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Silent Lake" data-desc="A peaceful landscape with reflections.">
+          <img src="images/painting2.jpg" class="card-img-top artwork-img" alt="Silent Lake" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Silent Lake</h5>
+            <p class="card-text">A peaceful landscape with reflections.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Flower Field" data-desc="Impressionist flowers in full bloom.">
+          <img src="images/painting3.jpg" class="card-img-top artwork-img" alt="Flower Field" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Flower Field</h5>
+            <p class="card-text">Impressionist flowers in full bloom.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Stormy Skies" data-desc="A dramatic play of clouds and light.">
+          <img src="images/painting4.jpg" class="card-img-top artwork-img" alt="Stormy Skies" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Stormy Skies</h5>
+            <p class="card-text">A dramatic play of clouds and light.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crafting & Drawing -->
+    <h3 class="mb-4">Crafting & Drawing</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+      <div class="col">
+        <div class="artwork-card" data-title="Paper Towns" data-desc="Miniature city crafted from recycled paper.">
+          <img src="images/craft1.jpg" class="card-img-top artwork-img" alt="Paper Towns" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Paper Towns</h5>
+            <p class="card-text">Miniature city crafted from recycled paper.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Ink Voyage" data-desc="A black and white pen illustration series.">
+          <img src="images/craft2.jpg" class="card-img-top artwork-img" alt="Ink Voyage" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Ink Voyage</h5>
+            <p class="card-text">A black and white pen illustration series.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Sketch Haven" data-desc="Graphite sketches of everyday emotions.">
+          <img src="images/craft3.jpg" class="card-img-top artwork-img" alt="Sketch Haven" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Sketch Haven</h5>
+            <p class="card-text">Graphite sketches of everyday emotions.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Origami Bloom" data-desc="A series of delicate folded flowers.">
+          <img src="images/craft4.jpg" class="card-img-top artwork-img" alt="Origami Bloom" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Origami Bloom</h5>
+            <p class="card-text">A series of delicate folded flowers.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wood Carving -->
+    <h3 class="mb-4">Wood Carving</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="artwork-card" data-title="Rustic Mask" data-desc="A tribal mask carved from cedar wood.">
+          <img src="images/wood1.jpg" class="card-img-top artwork-img" alt="Rustic Mask" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Rustic Mask</h5>
+            <p class="card-text">A tribal mask carved from cedar wood.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Nature Panel" data-desc="Wall decor carved with forest motifs.">
+          <img src="images/wood2.jpg" class="card-img-top artwork-img" alt="Nature Panel" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Nature Panel</h5>
+            <p class="card-text">Wall decor carved with forest motifs.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Totem Symbol" data-desc="A standing sculpture of protection.">
+          <img src="images/wood3.jpg" class="card-img-top artwork-img" alt="Totem Symbol" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Totem Symbol</h5>
+            <p class="card-text">A standing sculpture of protection.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="artwork-card" data-title="Eagle Spirit" data-desc="Wood carved eagle with detailed feathers.">
+          <img src="images/wood4.jpg" class="card-img-top artwork-img" alt="Eagle Spirit" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Eagle Spirit</h5>
+            <p class="card-text">Wood carved eagle with detailed feathers.</p>
+            <button class="btn btn-outline-primary learn-more-btn">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+   <!-- Artists Section -->
+   <section id="artists" class="bg-light">
+      <div class="container text-center">
+         <h2 class="mb-5">Featured Artists</h2>
+         <div class="row">
+            <div class="col-md-4"><h5>A. Rivera</h5><p>Nature-focused abstract painter.</p></div>
+            <div class="col-md-4"><h5>M. Tan</h5><p>Mixed media and urban surrealism.</p></div>
+            <div class="col-md-4"><h5>K. Lee</h5><p>Minimalist digital illustrator.</p></div>
+         </div>
+      </div>
+   </section>
+
+   <!-- About Section -->
+   <section id="about">
+      <div class="container text-center">
+         <h2 class="mb-4">About ArtSpace</h2>
+         <p class="lead">ArtSpace is a curated online gallery showcasing modern and emerging digital artists. We bring visual creativity closer to everyone, everywhere.</p>
+      </div>
+   </section>
+
+   <!-- Contact Section -->
+   <section id="contact" class="bg-light">
+      <div class="container text-center">
+         <h2 class="mb-4">Contact Us</h2>
+         <p>Email us at <a href="mailto:hello@artspace.com">hello@artspace.com</a> or follow us on social media!</p>
+      </div>
+   </section>
+
+   <!-- Preview Popup -->
+   <div class="preview-popup" id="popup">
+      <div class="preview-box" id="previewBox">
+         <i class="fas fa-times close-preview" id="closePopup"></i>
+         <img src="" alt="Preview" id="popupImg" />
+         <h4 id="popupTitle" class="mt-3"></h4>
+         <p id="popupDesc" class="text-muted"></p>
+      </div>
+   </div>
+
+   <!-- Footer -->
+   <footer class="text-center">
+      <div class="container">
+         <p>&copy; 2025 ArtSpace Gallery. All rights reserved.</p>
+         <p>
+            <a href="https://facebook.com/artspace" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg me-3"></i></a>
+            <a href="https://twitter.com/artspace" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg me-3"></i></a>
+            <a href="https://instagram.com/artspace" target="_blank" rel="noopener"><i class="fab fa-instagram fa-lg"></i></a>
+         </p>
+      </div>
+   </footer>
+
+   <!-- Bootstrap JS -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+   <!-- Custom JS -->
+   <script>
+      const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popupImg');
+    const popupTitle = document.getElementById('popupTitle');
+    const popupDesc = document.getElementById('popupDesc');
+    const closePopup = document.getElementById('closePopup');
+    const previewBox = document.getElementById('previewBox');
+
+    document.querySelectorAll('.learn-more-btn').forEach(button => {
+      button.addEventListener('click', function (e) {
+        const card = e.target.closest('.artwork-card');
+        popupImg.src = card.getAttribute('data-image');
+        popupTitle.textContent = card.getAttribute('data-title');
+        popupDesc.textContent = card.getAttribute('data-desc');
+        popup.style.display = 'flex';
+      });
+    });
+
+    closePopup.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    popup.addEventListener('click', (e) => {
+      if (!previewBox.contains(e.target)) {
+        popup.style.display = 'none';
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === "Escape") {
+        popup.style.display = 'none';
+      }
+    });
+   </script>
+</body>
+</html>
